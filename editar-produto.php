@@ -14,7 +14,7 @@ if (isset($_POST['editar'])) {
     $_POST['preco'] ?? $produto->getPreco(),
   );
 
-  if (isset($_FILES['imagem'])) {
+  if (isset($_FILES['imagem']['error']) == UPLOAD_ERR_OK) {
     $novoProduto->setImagem(uniqid() . $_FILES['imagem']['name']);
     move_uploaded_file($_FILES['imagem']['tmp_name'], $novoProduto->getImagemDiretorio());
   }

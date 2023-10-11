@@ -13,7 +13,7 @@ if (array_key_exists('cadastro', $_POST)) {
         $_POST['preco'],
     );
 
-    if (isset($_FILES['imagem'])) {
+    if (isset($_FILES['imagem']['error']) == UPLOAD_ERR_OK) {
         $novoProduto->setImagem(uniqid() . $_FILES['imagem']['name']);
         move_uploaded_file($_FILES['imagem']['tmp_name'], $produto->getImagemDiretorio());
     }
